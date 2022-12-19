@@ -1,0 +1,25 @@
+{% extends 'social/layout.html' %}
+
+{% block content %}
+
+<form id="form" method="POST" action="#">
+	{% csrf_token %}
+	<label  for="username">Usuario</label>
+	<input type="text" placeholder="Ingresa usuario" name="user" id="user" >
+	
+	<label for="password">Contraseña</label>
+	<input  type="text" placeholder="Ingresa contraseña" name="contra" id="contra">
+	
+	<select name = "tipousuario">
+		<option value = "admin">Administrador</option>
+		<option value = "cliente">cliente</option>
+		<option value = "gerente">Gerente</option>
+		<option value = "operador">Operador</option>
+	</select>
+
+	<input  type="submit" value="login">
+	<a href="#">¿No te has registrado?</a>
+	
+</form>
+
+{% endblock %}
