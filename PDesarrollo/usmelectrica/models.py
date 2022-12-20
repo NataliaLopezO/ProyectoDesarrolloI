@@ -33,7 +33,7 @@ class Operador(models.Model):
 class Gerente(models.Model):
     id_gerente = models.IntegerField(primary_key= True)
     tipo_id_gerente = models.CharField(max_length = 12, choices = id_type, default='C.C')
-    celular_gerente = models.IntegerField(null = True)
+    celular_gerente = models.IntegerField( null = True)
     nombre_gerente = models.CharField(max_length = 64, null=True)
     apellidoP_Gerente = models.CharField(max_length = 64, null=True)
     apellidoM_Gerente = models.CharField(max_length = 64, null=True)

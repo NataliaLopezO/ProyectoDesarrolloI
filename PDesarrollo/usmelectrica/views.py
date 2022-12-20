@@ -1,17 +1,24 @@
 from django.shortcuts import render, redirect
 from .models import *
 
+#Para desencriptar contrasenas
+#Catualice models, viw_admin y view operador
+from cryptography.fernet import Fernet
+key=Fernet.generate_key()
+objeto_cifrado=Fernet(key)
+
 # Create your views here.
+#CC, Contraseña, Tipo 
 def loginApp(request):
     if request.method =='POST':
 
         id = int(request.POST['user'])
-        contra = request.POST['contra']
+        contra = objeto_cifrado.encrypt(str.encode(request.POST['contra']))
         ##Administrador
         if request.POST['tipousuario']=='admin':
             admin = Administrador.objects.filter(id_admin= id, contrasena_admin= contra)
             if admin.exists():
-                return redirect('admin')
+                return redirect('admin_inicio')
         ##Gerente
         if request.POST['tipousuario']=='gerente':
             gerente = Gerente.objects.filter(id_gerente= id, contrasena_gerente= contra)

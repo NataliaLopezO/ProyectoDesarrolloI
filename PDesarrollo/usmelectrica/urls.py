@@ -6,7 +6,8 @@ urlpatterns= [
     path('', views.loginApp, name='login'),
 
     ##url administrador
-    path('administrador/', views_administrador.administrador, name='admin'),
+    path('administrador/gestion', views_administrador.administrador, name='admin'),
+    path('administrador/', views_administrador.administrador_inicio, name='admin_inicio'),
     path('administrador/borrar_operador/<int:user_id>/', views_administrador.admin_borrar_operadores, name='admin_borrar_operadores'),
     path('administrador/borrar_gerente/<int:user_id>/', views_administrador.admin_borrar_gerentes, name='admin_borrar_gerentes'),
     path('administrador/borrar_cliente/<int:user_id>/', views_administrador.admin_borrar_clientes, name='admin_borrar_clientes'),

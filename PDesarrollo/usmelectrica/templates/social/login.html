@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{%load static%}
+
+<html lang="en">
+<head>
+    <title>Desarrollo</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script src="https://kit.fontawesome.com/e17893926d.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="pantalla-dividida">
+        <div class="izquierda">
+            <div class="logo">
+                <img src="{% static 'logo_2.png' %}" alt="imagen del logo de la empresa">
+            </div>
+           
+                
+            <h2>
+                <form class="formulario" method="POST">
+					{% csrf_token %}
+                    <div class="contenedor">
+
+                        <div class="input-contenedor">
+                            <i class="fa-solid fa-user-tie icon"></i>
+                            <select class="select" name="tipousuario">
+                                <option value="cliente" selected>Cliente</option>
+                                <option value="operador" >Operador</option>
+                                <option value="admin">Administrador</option>
+                                <option value="gerente">Gerente</option>
+                              </select>
+                        </div>
+                        <div class="input-contenedor">
+                            <i class="fa-solid fa-envelope icon"></i>
+                            <input type="text" name="user" placeholder="Escribe tu cedula">
+                        </div>
+                        <div class="input-contenedor">
+                            <i class="fa-solid fa-lock icon"></i>
+                            <input type="password" name="contra" placeholder="Escribe tu contrase&ntilde;a">
+                        </div>
+                        <input type="submit" value="INGRESAR" class="button">
+                    </div>
+                </form>
+            </h2>
+
+
+        </div>
+        <div class="derecha">
+            <h3>SGU y consumo energetico</h1>
+            <h4>INGRESA CON TUS CREDENCIALES, SERVICIO DE GESTION DE ENERGIA</h2>
+        </div>
+    </section>
+</body>
+</html>
