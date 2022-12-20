@@ -12,11 +12,18 @@ def loginApp(request):
             admin = Administrador.objects.filter(id_admin= id, contrasena_admin= contra)
             if admin.exists():
                 return redirect('admin')
+        ##Gerente
+        if request.POST['tipousuario']=='gerente':
+            gerente = Gerente.objects.filter(id_gerente= id, contrasena_gerente= contra)
+            if gerente.exists():
+                return redirect('gerente') 
+
         ##Operador
         if request.POST['tipousuario']=='operador':
             operador = Operador.objects.filter(id_operador= id, contrasena_operador= contra)
             if operador.exists():
-                return redirect('admin') 
+                return redirect('operador') 
         
 
     return render(request, 'social/login.html')
+

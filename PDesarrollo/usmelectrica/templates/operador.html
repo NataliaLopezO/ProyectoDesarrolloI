@@ -1,0 +1,40 @@
+{% extends 'social/layout.html' %}
+
+{% block content %}
+
+<h1>HOLA OPERADOR</h1>
+<form action="{% url 'operador_crear' %}" method="POST" >
+    {% csrf_token %}
+   <a href='crear/' id='crear'>Crear clientes</a>
+</form>
+
+
+<h1>Clientes</h1>
+
+{% for cliente in clientes %}
+
+
+<div>
+    {{cliente.id_cliente}}
+    {{cliente.nombre_cliente}}
+    {{cliente.celular_cliente}}
+    {{cliente.email_cliente}}
+    {{cliente.direccion_cliente}}
+    {{cliente.estado_cliente}}
+    {{cliente.tipo_cliente}}
+
+    <form action="{% url 'operador_borrar_clientes' cliente.id_cliente %}" method="POST" >
+        {% csrf_token %}
+        <button>Activar/Desactivar</button>
+
+    </form>
+
+    <form action="{% url 'operador_actualizar_cliente' cliente.id_cliente %}">
+        {% csrf_token %}
+        <button>Editar</button>
+    </form>
+
+</div>
+
+{%endfor%}
+{% endblock %}
