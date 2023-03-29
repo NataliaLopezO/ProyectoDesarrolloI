@@ -1,0 +1,53 @@
+{% extends 'social/layout.html' %}
+
+{% block content %}
+
+<h1>HOLA GERENTE, YA ENTRASTE</h1>
+<h1>Clientes</h1>
+{% for cliente in clientes %}
+
+
+<div>
+    {{cliente.id_cliente}}
+    {{cliente.nombre_cliente}}
+    {{cliente.celular_cliente}}
+    {{cliente.email_cliente}}
+    {{cliente.direccion_cliente}}
+    {{cliente.estado_cliente}}
+    {{cliente.tipo_cliente}}
+</div>
+{%endfor%}
+
+
+<h1>operadores</h1>
+{% for operador in operadores %}
+<div>
+ 
+    {{operador.id_operador}}
+    {{operador.nombre_operador}}
+    {{operador.celular_operador}}
+    {{operador.email_operador}}
+    {{operador.direccion_operador}}
+    {{operador.estado_operador}}
+
+</div>
+
+{%endfor%}
+
+
+<h1>Administrador</h1>
+{% for administrador in administradores %}
+<div>
+ 
+    {{administrador.id_admin}}
+    {{administrador.nombre_admin}}
+    {{administrador.celular_admin}}
+    {{administrador.email_admin}}
+    {{administrador.direccion_admin}}
+    {{administrador.estado_admin}}
+
+</div>
+
+{%endfor%}
+
+{% endblock %}

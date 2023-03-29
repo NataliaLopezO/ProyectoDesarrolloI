@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{%load static%}
+
+<html lang="en">
+  <head>
+    <title>Gestion Administrador</title>
+    <link rel="stylesheet" href="{% static 'admin-gestion.css' %}" />
+    <script
+      src="https://kit.fontawesome.com/e17893926d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="{% static 'logo_2.png' %}" 
+          alt="logo de la compania"
+          class="logo-img"
+        />
+        <h2 class="logo-nombre">SGU Y CONSUMO ENERGETICO</h2>
+      </div>
+      <nav>
+        <span class="navbar-text"> Administrador </span>
+        <span class="navbar-text"> Gestion </span>
+
+        <a href="{% url 'login' %}" class="nav-link">Salir</a>
+      </nav>
+    </header>
+
+<div>
+    <h1>GESTION DE USUARIOS</h1>
+</div>
+
+<div id="create">
+<form action="{% url 'admin_crear' %}">
+    {% csrf_token %}
+    <button id="btn-abrir-popup-2" class="btn-abrir-popup-2">Crear usuarios</button>
+</form>
+  </div>
+
+  <div>
+    <table id="usuarios">
+      <tr>
+        <th>Tipo I.D</th>
+        <th>Identificación</th>
+        <th>Nombre</th>
+        <th>Primer apellido</th>
+        <th>Segundo apellido</th>
+        <th>Correo</th>
+        <th>Direccion</th>
+        <th>Celular</th>
+        <th>Estado</th>
+        <th>Gestion</th>
+      </tr>
+
+{% for gerente in gerentes %}
+
+
+
+      <tr>
+        <td>{{gerente.tipo_id_gerente}}</td>
+        <td>{{gerente.id_gerente}}</td>
+        <td>{{gerente.nombre_gerente}}</td>
+        <td>{{gerente.apellidoP_Gerente}}</td>
+        <td>{{gerente.apellidoM_Gerente}}</td>
+        <td>{{gerente.email_gerente}}</td>
+        <td>{{gerente.direccion_gerente}}</td>
+        <td>{{gerente.celular_gerente}}</td>
+        <td>{{gerente.estado_gerente}}</td>
+        <td>
+        
+         <form action="{% url 'admin_actualizar_gerente1' gerente.id_gerente %}">
+                {% csrf_token %}
+          <button id="btn-abrir-popup" class="btn-abrir-popup">
+            Editar
+          </button>
+        </form>
+
+          <form action="{% url 'admin_borrar_gerentes' gerente.id_gerente %}" method="POST" >
+            {% csrf_token %}
+            {% if gerente.estado_gerente %}
+            <button id="btn-abrir-popup" class="btn-abrir-popup">Desactivar</button>
+            {% else %}
+            <button id="btn-abrir-popup" class="btn-abrir-popup">Activar</button>
+            {% endif%}
+
+
+        </form>
+        </td>
+      </tr>
+
+      {%endfor%}
+
+    </table>
+  </div>
+
+
+{% block content %}
+
+{% endblock content %}
+
+
+  <div id="create">
+    <button id="btn-abrir-popup-2" class="btn-abrir-popup-2">Crear Usuario</button>
+  </div>
+
+  <div class="overlay-2" id="overlay-2">
+    <div class="popup-2" id="popup-2">
+      <a href="#" id="btn-cerrar-popup-2" class="btn-cerrar-popup-2"
+        ><i class="fas fa-times-2"></i
+      ></a>
+      <h3>USUARIO</h3>
+      <h6>CREAR</h6>
+      <form action="">
+        <div class="contenedor-inputs-2">
+          <input type="text" placeholder="Nombre" />
+          <input type="number" placeholder="CC" />
+          <input type="email" placeholder="Correo" />
+          <input type="text" placeholder="Direccion" />
+          <input type="tel" placeholder="Celular" />
+        </div>
+        <input type="submit" class="btn-submit-2" value="Guardar" />
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'popup-uno.js' %}" ></script>
+  <script src="{% static 'popup-dos.js' %}" ></script>
+</body>
+</html>

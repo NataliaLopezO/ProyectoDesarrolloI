@@ -1,0 +1,14 @@
+{% extends 'social/layout.html' %}
+
+{% block content %}
+
+<form action="#" method="POST" >
+	{% csrf_token %}
+
+{{form}}
+
+	<button type="submit" value="Editar">Editar gerente</button>
+	
+</form>
+
+{% endblock %}
